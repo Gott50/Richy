@@ -67,24 +67,18 @@ module.exports = function (param) {
     }
 
 
-    if (income < 1000) {
-        if (out != '') {
-            out = out + ' PS: '
-        }
+    if ((income < 1000)&&(amount > 50000)&&(amount < 2500)) {
 
-        out = out + 'Du brauchst mindestens 1000 Euro, um bei uns einen Kredit zu bekommen.'
+
+        out = out + 'Du brauchst mindestens 1000 Euro Gehalt, um bei uns einen Kredit zu bekommen.'
     } else {
         if (monthly > income) {
-            if (out != '') {
-                out = out + ' PS: '
-            }
+
 
             out = out + 'Wenn Du nicht mehr bei Mama und Papa wohnst, würden wir Dir nicht empfehlen das Angebot anzunehmen.'
         } else {
             if (monthly > income - 1000) {
-                if (out != '') {
-                    out = out + ' PS: '
-                }
+
 
                 out = out + 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen den Kredit zu verringern. Die Rate wäre ' + Math.round(monthly) + ' EUR';
             }
