@@ -1,5 +1,5 @@
 module.exports = function (param) {
-    var income = param.gehalt;
+    var income = param.Gehalt;
     var out = "";
     var monthly
     var duration = param.Laufzeit.amount;
@@ -8,8 +8,8 @@ module.exports = function (param) {
     if (durationUnit != 'monat') {
         duration = duration / 12;
     }
-    var nominalInterest
-    var amount
+    var nominalInterest;
+    var amount = param.Kreditsumme;
 
 
     if (income >= 5000) {
