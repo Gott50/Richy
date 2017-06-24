@@ -1,4 +1,5 @@
 module.exports = function (param) {
+    console.log("Parameter", param);
     var income = param.Gehalt;
     var out = "";
     var monthly
