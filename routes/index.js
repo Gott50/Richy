@@ -16,7 +16,7 @@ function getCredit(request, speech) {
         if (!param[key] || param[key] == "") array.push(key);
     });
 
-    if (array == [])
+    if (array.length == 0)
         return calculate(request.result.parameters);
 
     array = array.map(function (a) {
