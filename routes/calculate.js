@@ -82,8 +82,9 @@ module.exports = function (param) {
             }
         }
     }
-}
-return {
-    speech: out,
-    data: {}
+
+    return {
+        speech: out,
+        data: {}
+    }
 }
