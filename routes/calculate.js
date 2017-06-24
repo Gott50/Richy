@@ -2,7 +2,12 @@ module.exports = function (param) {
     var income = param.gehalt;
     var out = "";
     var monthly
-    var duration
+    var duration = param.Laufzeit.amount;
+    var durationUnit = param.unit;
+    if (durationUnit != 'monat') {
+        duration = duration / 12;
+    }
+
     var interest
     var amount
 
@@ -29,8 +34,8 @@ module.exports = function (param) {
             out = 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen die Raten zu verringern.'
         }
         else {
-            out = 'Wir haben ein tolles Angebot für Dich mit nur ' + interest + '% Zinsen. Du zahlst ' + duration + ' monatliche Raten a ' + monthly+
-            ' EUR.'
+            out = 'Wir haben ein tolles Angebot für Dich mit nur ' + interest + '% Zinsen. Du zahlst ' + duration + ' monatliche Raten a ' + monthly +
+                ' EUR.'
 
         }
     }
