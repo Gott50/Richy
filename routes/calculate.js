@@ -32,9 +32,9 @@ module.exports = function (param) {
         }
     }
 // Monatsrate=Kreditsumme(Nominalzins/12)/(1-(1+Nominalzins/12)^-Laufzeit
-    monthly = amount*(nominalInterest / 12/100) / (1 -  Math.pow((1 +nominalInterest / 12/100), (-1)*duration));
+    monthly = amount * (nominalInterest / 12 / 100) / (1 - Math.pow((1 + nominalInterest / 12 / 100), (-1) * duration));
 
-    out='DEBUG:'+duration+' '+ amount;
+    out = 'DEBUG:' + duration + ' ' + amount;
 
 
     if (duration < 12) {
@@ -47,9 +47,6 @@ module.exports = function (param) {
     }
 
 
-
-
-
     if (amount < 2500) {
         if (out == '') {
             out = 'So wenig? Bei weniger als 2500 Ocken bieten unsere Konten Dir ein tolles Dispo an. '
@@ -58,9 +55,6 @@ module.exports = function (param) {
             out = out + 'Und ausserdem: Bei so einer kleinen Summe, kannst Du Deine Omi fragen'
         }
     }
-
-
-
 
 
     if (amount > 50000) {
@@ -87,9 +81,11 @@ module.exports = function (param) {
                 out = out + 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen den Kredit zu verringern. Die Rate'
             }
             else {
-                out = 'Wir haben ein tolles Angebot für Dich mit nur ' + nominalInterest + '% Zinsen ('
-                    + effectiveInterest + '%effektiv Zins). Du zahlst ' + duration + ' monatliche Raten a ' + Math.round(monthly) +
-                    ' EUR.'
+                if (out != '') {
+                    out = 'Wir haben ein tolles Angebot für Dich mit nur ' + nominalInterest + '% Zinsen ('
+                        + effectiveInterest + '%effektiv Zins). Du zahlst ' + duration + ' monatliche Raten a ' + Math.round(monthly) +
+                        ' EUR.'
+                }
 
             }
         }
