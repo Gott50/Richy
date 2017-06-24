@@ -1,4 +1,5 @@
 module.exports = function (param) {
+
 var out=""
 
     return {
