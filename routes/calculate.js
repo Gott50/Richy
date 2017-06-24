@@ -4,7 +4,7 @@ module.exports = function (param) {
     var monthly
     var duration = param.Laufzeit.amount;
     var effectiveInterest;
-    var durationUnit = param.unit;
+    var durationUnit = param.unit ? param.unit : "monat";
     if (!durationUnit.contains('monat')) {
         duration = duration / 12;
     }
