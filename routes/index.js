@@ -25,7 +25,7 @@ router.post('/hook', function (req, res) {
                 }
 
                 if (request.result.action === "getCredit") {
-                    var out = calculate(requestBody.result.parameters);
+                    var out = calculate(request.result.parameters);
                     if (out) {
                         data = {
                             calculate: out.data,
