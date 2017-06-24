@@ -3,29 +3,33 @@ module.exports = function (param) {
     var out = "";
     var monthly
     var duration = param.Laufzeit.amount;
+    var effectiveInterest;
     var durationUnit = param.unit;
     if (durationUnit != 'monat') {
         duration = duration / 12;
     }
 
-    var interest
+    var nominalInterest
     var amount
 
 
     if (income >= 5000) {
-        interest = 1.99
+        nominalInterest = 1.96
+        effectiveInterest='1,99'
     } else {
     }
     if (income >= 4000) {
-        interest = 3.99
+        nominalInterest = 3.90
+        effectiveInterest ='3,99'                                                           
     } else {
         if (income >= 3000) {
-            interest = 5.99
+            nominalInterest = 5.8
+            effectiveInterest= '5,99'
         }
 
     }
     // Monatsrate=Kreditsumme*(Nominalzins/12)/(1-(1+Nominalzins/12)^Laufzeit
-    monthly = amount * (interest / 12) / (1 - (1 + Math.pow(interest / 12), duration));
+    monthly = amount * (nominalInterest / 12) / (1 - (1 + Math.pow(nominalInterest / 12), duration));
 
     if (monthly > income) {
         out = 'Wenn Du nicht mehr bei Mama und Papa wohnst, würden wir Dir nicht empfehlen das Angebot anzunehmen.'
@@ -34,7 +38,7 @@ module.exports = function (param) {
             out = 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen die Raten zu verringern.'
         }
         else {
-            out = 'Wir haben ein tolles Angebot für Dich mit nur ' + interest + '% Zinsen. Du zahlst ' + duration + ' monatliche Raten a ' + monthly +
+            out = 'Wir haben ein tolles Angebot für Dich mit nur ' + nominalInterest + '% Zinsen ('+effectiveInterest+'%effektiv Zins). Du zahlst ' + duration + ' monatliche Raten a ' + monthly +
                 ' EUR.'
 
         }
