@@ -38,6 +38,15 @@ router.post('/hook', function (req, res) {
             else if (request.result.action)
                 speech += 'action: ' + request.result.action;
         }
+    } catch (err) {
+        console.error("Can't process request", err);
+
+        return res.status(400).json({
+            status: {
+                code: 400,
+                errorType: err.message
+            }
+        });
     }
 
     return res.json({
