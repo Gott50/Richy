@@ -3,10 +3,27 @@ var router = express.Router();
 var calculate = require("./calculate");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+    res.render('index', {title: 'Express'});
 });
 
+function getCredit(request, speech) {
+    var param = request.result.parameters;
+    var keys = ["Gehalt", "Kreditsumme", "Laufzeit"];
+
+    var array = [];
+    keys.forEach(function (key) {
+        if (!param[key] || param[key] == "") array.push(key);
+    })
+
+    if (array == [])
+        return calculate(request.result.parameters);
+
+    return {
+        speech: speech.replace("PARAMETER", array.join(" und ")),
+        data: {}
+    }
+}
 router.post('/hook', function (req, res) {
     try {
         var speech = 'empty speech';
@@ -25,7 +42,7 @@ router.post('/hook', function (req, res) {
                 }
 
                 if (request.result.action === "getCredit") {
-                    var out = calculate(request.result.parameters);
+                    var out = getCredit(request, speech);
                     if (out) {
                         data = {
                             calculate: out.data,
