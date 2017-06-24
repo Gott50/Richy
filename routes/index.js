@@ -13,7 +13,7 @@ router.post('/hook', function (req, res) {
         var data = 'empty data';
         if (req.body) {
             var request = req.body;
-            console.log(request);
+            console.log(JSON.stringify(request));
 
             if (request.result) {
                 speech = '';
