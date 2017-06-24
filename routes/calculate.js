@@ -34,7 +34,6 @@ module.exports = function (param) {
 // Monatsrate=Kreditsumme(Nominalzins/12)/(1-(1+Nominalzins/12)^-Laufzeit
     monthly = amount * (nominalInterest / 12 / 100) / (1 - Math.pow((1 + nominalInterest / 12 / 100), (-1) * duration));
 
-    out = 'DEBUG:' + duration + ' ' + amount;
 
 
     if (duration < 12) {
@@ -67,18 +66,27 @@ module.exports = function (param) {
         }
     }
 
-    if (out != '') {
-        out = out + ' PS: '
-    }
 
     if (income < 1000) {
+        if (out != '') {
+            out = out + ' PS: '
+        }
+
         out = out + 'Du brauchst mindestens 1000 Euro, um bei uns einen Kredit zu bekommen.'
     } else {
         if (monthly > income) {
+            if (out != '') {
+                out = out + ' PS: '
+            }
+
             out = out + 'Wenn Du nicht mehr bei Mama und Papa wohnst, würden wir Dir nicht empfehlen das Angebot anzunehmen.'
         } else {
             if (monthly > income - 1000) {
-                out = out + 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen den Kredit zu verringern. Die Rate wäre ' +  Math.round(monthly);
+                if (out != '') {
+                    out = out + ' PS: '
+                }
+
+                out = out + 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen den Kredit zu verringern. Die Rate wäre ' + Math.round(monthly) + ' EUR';
             }
             else {
                 if (out == '') {
