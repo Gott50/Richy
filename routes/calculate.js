@@ -5,10 +5,9 @@ module.exports = function (param) {
     var duration = param.Laufzeit.amount;
     var effectiveInterest;
     var durationUnit = param.unit;
-    if (durationUnit != 'monat') {
+    if (!durationUnit.contains('monat')) {
         duration = duration / 12;
     }
-
     var nominalInterest
     var amount
 
@@ -20,7 +19,7 @@ module.exports = function (param) {
     }
     if (income >= 4000) {
         nominalInterest = 3.90
-        effectiveInterest ='3,99'                                                           
+        effectiveInterest ='3,99'
     } else {
         if (income >= 3000) {
             nominalInterest = 5.8
@@ -28,7 +27,7 @@ module.exports = function (param) {
         }
 
     }
-    // Monatsrate=Kreditsumme*(Nominalzins/12)/(1-(1+Nominalzins/12)^Laufzeit
+    // Monatsrate=Kreditsumme*(Nominalzins/12)/(1-(1+Nominalzins/12)^Laufzeit 
     monthly = amount * (nominalInterest / 12) / (1 - (1 + Math.pow(nominalInterest / 12), duration));
 
     if (monthly > income) {
