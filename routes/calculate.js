@@ -78,10 +78,10 @@ module.exports = function (param) {
             out = out + 'Wenn Du nicht mehr bei Mama und Papa wohnst, würden wir Dir nicht empfehlen das Angebot anzunehmen.'
         } else {
             if (monthly > income - 1000) {
-                out = out + 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen den Kredit zu verringern. Die Rate'
+                out = out + 'Wenn Du mehr essen willst, als Brot und Wasser, würden wir Dir empfehlen den Kredit zu verringern. Die Rate wäre ' +  Math.round(monthly);
             }
             else {
-                if (out != '') {
+                if (out == '') {
                     out = 'Wir haben ein tolles Angebot für Dich mit nur ' + nominalInterest + '% Zinsen ('
                         + effectiveInterest + '%effektiv Zins). Du zahlst ' + duration + ' monatliche Raten a ' + Math.round(monthly) +
                         ' EUR.'
