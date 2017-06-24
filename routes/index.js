@@ -9,18 +9,29 @@ router.get('/', function (req, res, next) {
 
 function getCredit(request, speech) {
     var param = request.result.parameters;
-    var keys = ["Gehalt", "Kreditsumme", "Laufzeit"];
+    var keys = ["Laufzeit", "Kreditsumme", "Gehalt"];
 
     var array = [];
     keys.forEach(function (key) {
         if (!param[key] || param[key] == "") array.push(key);
-    })
+    });
 
     if (array == [])
         return calculate(request.result.parameters);
 
+    array = array.map(function (a) {
+        switch (a) {
+            case "Laufzeit":
+                return "deine gewünschte Laufzeit";
+            case "Kreditsumme":
+                return "die gewollte Kredithöhe";
+            case "Gehalt":
+                return "dein monatliches Nettogehalt";
+        }
+    });
+
     return {
-        speech: speech.replace("PARAMETER", array.join(" und ")),
+        speech: speech.replace("PARAMETER", "D" + array.join(" und ").substring(1)),
         data: {}
     }
 }
