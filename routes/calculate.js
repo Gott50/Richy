@@ -32,7 +32,7 @@ module.exports = function (param) {
         }
     }
 // Monatsrate=Kreditsumme(Nominalzins/12)/(1-(1+Nominalzins/12)^Laufzeit
-    monthly = amount(nominalInterest / 12) / (1 - (1 + Math.pow(nominalInterest / 12), duration));
+    monthly = amount*(nominalInterest / 12) / (1 - (1 + Math.pow(nominalInterest / 12), duration));
 
     if (duration < 12) {
         out = 'Weniger als 12 Monate? Dann warte doch noch ein wenig.'
