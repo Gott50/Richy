@@ -26,6 +26,12 @@ module.exports = function (param) {
             nominalInterest = 5.8
             effectiveInterest= '5,99'
         }
+        else
+        {
+            nominalInterest = 5.8
+            effectiveInterest= '5,99'
+
+        }
 
     }
     // Monatsrate=Kreditsumme*(Nominalzins/12)/(1-(1+Nominalzins/12)^Laufzeit 
